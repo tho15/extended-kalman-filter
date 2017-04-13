@@ -51,13 +51,13 @@ void KalmanFilter::UpdateEKF(const VectorXd &z, const MatrixXd &Hj, const Matrix
   /**
     * update the state by using Extended Kalman Filter equations
   */
-  float ro, phi, ro_dot;
-  float px = x_(0);
-  float py = x_(1);
+  double ro, phi, ro_dot;
+  double px = x_(0);
+  double py = x_(1);
   
-  float p2 = px*px + py*py;
-  if(0 == p2) {
-  	std::cout << "EKF error: position vector magnitude is 0!" << std::endl;
+  double p2 = px*px + py*py;
+  if(std::fabs(p2) < 0.00001) {
+  	std::cout << "EKF: position vector magnitude is 0, skip update!" << std::endl;
   	return;
   }
   

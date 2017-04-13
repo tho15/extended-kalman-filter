@@ -49,14 +49,14 @@ MatrixXd Tools::CalculateJacobian(const VectorXd& x_state) {
   */
 	MatrixXd Hj(3,4);
 	//recover state parameters
-	float px = x_state(0);
-	float py = x_state(1);
-	float vx = x_state(2);
-	float vy = x_state(3);
+	double px = x_state(0);
+	double py = x_state(1);
+	double vx = x_state(2);
+	double vy = x_state(3);
 
-	float p2   = px*px + py*py;
-	float p12  = sqrt(p2);
-	float p32  = p2*p12;
+	double p2   = px*px + py*py;
+	double p12  = sqrt(p2);
+	double p32  = p2*p12;
 	//check division by zero
 	if (std::fabs(p2) < 0.00001) {
 	    std::cout<<"CalculateJacobian error: divided by 0!"<< std::endl;
